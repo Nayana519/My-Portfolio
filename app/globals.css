@@ -3,50 +3,40 @@
 @tailwind utilities;
 
 :root {
-  /* ─── Background ─── */
-  --bg: linear-gradient(180deg, #fff5f8, #ffffff);
-  --bg-elevated: #fdeff7;
-  --bg-card: #fff;
-  
-  /* Surfaces */
-  --surface: rgba(255, 182, 193, 0.08);
-  --surface-hover: rgba(255, 182, 193, 0.12);
-  --border: rgba(255, 182, 193, 0.2);
-  --border-strong: rgba(255, 182, 193, 0.4);
-
-  /* Accent palette - soft pink */
-  --accent-1: #e66fac;   /* rose-pink */
-  --accent-2: #ffb6c1;   /* light pink */
-  --accent-3: #ff99cc;   /* pink */
-  --accent-warm: #ff9bb0;
+  /* ─── Background — deep dark like the reference images ─── */
+  --bg:          #0d0514;
+  --bg-elevated: #130920;
+  --bg-card:     #1a0a28;
 
   /* ─── Surfaces ─── */
-  --surface: rgba(244, 114, 182, 0.05);
-  --surface-hover: rgba(184, 95, 141, 0.447);
-  --border: rgba(117, 29, 75, 0.12);
-  --border-strong: rgba(110, 29, 71, 0.718);
+  --surface:        rgba(255, 20, 147, 0.06);
+  --surface-hover:  rgba(255, 20, 147, 0.12);
+  --border:         rgba(255, 105, 180, 0.14);
+  --border-strong:  rgba(255, 105, 180, 0.35);
 
-  /* ─── Rose / Fuchsia / Violet accent palette ─── */
-  --accent-1: #e66fac;   /* rose-pink */
-  --accent-2: #700980e4;   /* magenta fuchsia */
-  --accent-3: #9131eacd;   /* violet purple */
-  --accent-warm: #e74b8e; /* warm rose */
+  /* ─── Hot-pink / Neon-rose accent palette ─── */
+  --accent-1:    #c21b66;   /* neon hot-pink */
+  --accent-2:    #c7558c;   /* soft rose */
+  --accent-3:    #c2185b;   /* deep magenta */
+  --accent-warm: #fa0f8cd9;   /* deep-pink glow */
+  --accent-glow: rgba(255, 45, 138, 0.55);
 
   /* ─── Text ─── */
-  --text-primary: #fef0f5;
-  --text-muted: #f9f4d4;
-  --text-faint: #be8eb0;
+  --text-primary: #fce8f3;
+  --text-muted:   #d4a0bd;
+  --text-faint:   #9b6e8a;
 
   /* ─── Fonts ─── */
   --font-display: var(--font-playfair);
-  --font-body: var(--font-outfit);
+  --font-body:    var(--font-outfit);
 }
 
 /* ─────────────────────────────────────────
    Base resets
 ───────────────────────────────────────── */
-* {
+*, *::before, *::after {
   border-color: var(--border);
+  box-sizing: border-box;
 }
 
 html {
@@ -58,35 +48,37 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-body), sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 /* ─────────────────────────────────────────
-   Typography defaults
-   ───────────────────────────────────────── */
+   Typography defaults — generous spacing
+───────────────────────────────────────── */
 p {
-  margin-bottom: 1rem;
-  line-height: 1.7;
-}
-section > * + * {
-  margin-top: 1.5rem;
-}
-h2, h3, h4, h5, h6 {
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+  font-size: 1.0625rem;
 }
 
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.05; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-top: 2.5rem; margin-bottom: 0.75rem; }
+h3 { font-size: 1.35rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+h4, h5, h6 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+
+section > * + * { margin-top: 2rem; }
 
 ::selection {
-  background: var(--accent-2);
-  color: #0e0a10;
+  background: var(--accent-1);
+  color: #0d0514;
 }
 
 /* ─────────────────────────────────────────
    Scrollbar
 ───────────────────────────────────────── */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--accent-1), var(--accent-3));
@@ -97,30 +89,32 @@ h2, h3, h4, h5, h6 {
    Focus
 ───────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--accent-2);
+  outline: 2px solid var(--accent-1);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 /* ─────────────────────────────────────────
-   Gradient utilities
+   Gradient text utilities
 ───────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(120deg, var(--accent-1), var(--accent-2) 45%, var(--accent-3));
+  background: linear-gradient(120deg, #ff2d8a, #ff6eb5 45%, #ff2d8a);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  background-size: 200% auto;
+  animation: text-shimmer 4s linear infinite;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(120deg, var(--accent-warm), var(--accent-1) 50%, var(--accent-2));
+  background: linear-gradient(120deg, #ff1493, #ff2d8a 50%, #ff6eb5);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 /* ─────────────────────────────────────────
-   Glass morphism
+   Glassmorphism
 ───────────────────────────────────────── */
 .glass {
   background: var(--surface);
@@ -130,14 +124,14 @@ h2, h3, h4, h5, h6 {
 }
 
 .glass-warm {
-  background: rgba(244, 114, 181, 0.136);
-  border: 1px solid rgba(244, 114, 182, 0.18);
+  background: rgba(255, 45, 138, 0.08);
+  border: 1px solid rgba(255, 105, 180, 0.18);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
 /* ─────────────────────────────────────────
-   Noise overlay
+   Noise grain overlay
 ───────────────────────────────────────── */
 .noise::before {
   content: "";
@@ -145,12 +139,12 @@ h2, h3, h4, h5, h6 {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: .088;
+  opacity: 0.032;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ─────────────────────────────────────────
-   Shimmer sweep (on buttons / cards)
+   Shimmer sweep (hover on cards / buttons)
 ───────────────────────────────────────── */
 .shimmer-sweep {
   position: relative;
@@ -163,25 +157,14 @@ h2, h3, h4, h5, h6 {
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.14) 50%,
     transparent 65%
   );
   transform: translateX(-100%);
   transition: none;
 }
 .shimmer-sweep:hover::after {
-  animation: shimmer-sweep 0.67s ease forwards;
-}
-
-/* ─────────────────────────────────────────
-   Border gradient stripe (left side of cards)
-───────────────────────────────────────── */
-.border-gradient-left {
-  border-left: 2px solid transparent;
-  background-image: linear-gradient(var(--bg-card), var(--bg-card)),
-    linear-gradient(180deg, var(--accent-1), var(--accent-3));
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+  animation: shimmer-sweep 0.7s ease forwards;
 }
 
 /* ─────────────────────────────────────────
@@ -200,8 +183,40 @@ h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   transition: width 0.3s ease;
 }
-.nav-link:hover::after {
+.nav-link:hover::after { width: 100%; }
+
+/* ─────────────────────────────────────────
+   Pink laser sweep — triggered on name click
+───────────────────────────────────────── */
+.laser-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.laser-sweep.active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 20, 147, 0.6) 40%,
+    rgba(255, 105, 180, 0.9) 50%,
+    rgba(255, 20, 147, 0.6) 60%,
+    transparent
+  );
+  animation: laser-pass 0.65s ease forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────
+   Section divider gradient line
+───────────────────────────────────────── */
+.section-divider {
   width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-1) 40%, var(--accent-2) 60%, transparent);
+  opacity: 0.35;
 }
 
 /* ─────────────────────────────────────────
@@ -217,17 +232,17 @@ h2, h3, h4, h5, h6 {
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(100px) rotate(45deg); }
-  50%       { transform: translateY(-58px) rotate(3deg); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-8px) rotate(3deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.4; }
   50%       { opacity: 1; }
 }
 
 @keyframes sparkle-spin {
-  0%   { transform: rotate(0deg) scale(1);   opacity: 1; }
+  0%   { transform: rotate(0deg) scale(1);    opacity: 1; }
   50%  { transform: rotate(180deg) scale(1.3); opacity: 0.7; }
   100% { transform: rotate(360deg) scale(1);  opacity: 1; }
 }
@@ -243,8 +258,8 @@ h2, h3, h4, h5, h6 {
 }
 
 @keyframes radial-pulse {
-  0%, 100% { transform: scale(1);   opacity: 0.6; }
-  50%       { transform: scale(1.08); opacity: 0.9; }
+  0%, 100% { transform: scale(1);    opacity: 0.6; }
+  50%       { transform: scale(1.1); opacity: 1; }
 }
 
 @keyframes text-shimmer {
@@ -252,16 +267,48 @@ h2, h3, h4, h5, h6 {
   100% { background-position: 200% center; }
 }
 
+@keyframes petal-fall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(120px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes laser-pass {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  30%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: translateX(120%);  opacity: 0; }
+}
+
+@keyframes card-drop {
+  0%   { transform: translateY(-140px) rotate(-8deg); opacity: 0; }
+  60%  { transform: translateY(14px)   rotate(2deg);  opacity: 1; }
+  80%  { transform: translateY(-6px)   rotate(-1deg); }
+  100% { transform: translateY(0px)    rotate(0deg);  opacity: 1; }
+}
+
+@keyframes blossom-burst {
+  0%   { transform: scale(0) rotate(0deg);   opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: scale(1) rotate(var(--rot)); opacity: 0; }
+}
+
+@keyframes ping-bright {
+  0%    { transform: scale(1);    opacity: 0.85; }
+  75%   { transform: scale(2.2);  opacity: 0; }
+  100%  { transform: scale(2.2);  opacity: 0; }
+}
+
 /* ─────────────────────────────────────────
-   Utility classes for keyframes
+   Utility animation classes
 ───────────────────────────────────────── */
 .animate-float        { animation: float 7s ease-in-out infinite; }
 .animate-float-slow   { animation: float-slow 9s ease-in-out infinite; }
-.animate-pulse-glow   { animation: pulse-glow 3.5s ease-in-out infinite; }
+.animate-pulse-glow   { animation: pulse-glow 2.5s ease-in-out infinite; }
 .animate-sparkle-spin { animation: sparkle-spin 4s linear infinite; }
 .animate-marquee      { animation: marquee 28s linear infinite; }
 .animate-blink-cursor { animation: blink-cursor 1s step-end infinite; }
-.animate-radial-pulse { animation: radial-pulse 4s ease-in-out infinite; }
+.animate-radial-pulse { animation: radial-pulse 3s ease-in-out infinite; }
+.animate-ping-bright  { animation: ping-bright 1.2s cubic-bezier(0, 0, 0.2, 1) infinite; }
 
 /* ─────────────────────────────────────────
    Reduced-motion fallback

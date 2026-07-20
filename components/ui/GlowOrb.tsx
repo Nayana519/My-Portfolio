@@ -6,10 +6,11 @@ interface GlowOrbProps {
   color?: "rose" | "violet" | "fuchsia";
 }
 
+// Updated to match hot-pink neon theme
 const colors = {
-  rose:    "radial-gradient(circle, rgba(244,114,182,0.30), rgba(168,85,247,0.10) 50%, transparent 70%)",
-  violet:  "radial-gradient(circle, rgba(168,85,247,0.28), rgba(244,114,182,0.08) 50%, transparent 70%)",
-  fuchsia: "radial-gradient(circle, rgba(232,121,249,0.28), rgba(244,114,182,0.10) 50%, transparent 70%)",
+  rose:    "radial-gradient(circle, rgba(255,45,138,0.38), rgba(194,24,91,0.14) 50%, transparent 70%)",
+  violet:  "radial-gradient(circle, rgba(194,24,91,0.32), rgba(255,45,138,0.10) 50%, transparent 70%)",
+  fuchsia: "radial-gradient(circle, rgba(255,20,147,0.32), rgba(255,45,138,0.12) 50%, transparent 70%)",
 };
 
 export default function GlowOrb({ className, size = 400, color = "rose" }: GlowOrbProps) {

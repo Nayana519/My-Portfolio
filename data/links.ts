@@ -1,11 +1,12 @@
 import { NavLink, SocialLink } from "@/types";
 
 export const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "Experience", href: "/experience" },
-  { label: "Achievements", href: "/achievements" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home",         href: "#hero" },
+  { label: "About",        href: "#about" },
+  { label: "Skills",       href: "#skills" },
+  { label: "Projects",     href: "#projects" },
+  { label: "Experience",   href: "#experience" },
+  { label: "Contact",      href: "#contact" },
 ];
 
 export const socialLinks: SocialLink[] = [

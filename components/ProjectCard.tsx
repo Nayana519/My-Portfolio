@@ -22,10 +22,10 @@ export default function ProjectCard({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Card hover={false} className="overflow-hidden p-8 sm:p-10">
+      <Card hover={false} className="overflow-hidden p-6 sm:p-8">
         <div
-          className={`grid grid-cols-1 gap-10 ${
-            reversed ? "lg:grid-cols-[0.9fr_1.1fr]" : "lg:grid-cols-[1.1fr_0.9fr]"
+          className={`grid grid-cols-1 gap-8 ${
+            reversed ? "lg:grid-cols-[1fr_1fr]" : "lg:grid-cols-[1fr_1fr]"
           }`}
         >
           <div className={reversed ? "lg:order-2" : ""}>

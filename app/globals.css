@@ -6,7 +6,7 @@
   /* ─── Background — deep dark like the reference images ─── */
   --bg:          #0d0514;
   --bg-elevated: #130920;
-  --bg-card:     #1a0a28;
+  --bg-card:     rgba(13, 5, 20, 0.75);
 
   /* ─── Surfaces ─── */
   --surface:        rgba(255, 20, 147, 0.06);
@@ -41,11 +41,12 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
+  /* fill the fixed-bg gap so no dark-rectangle shows above the navbar */
+  background: #0d0514;
 }
 
 body {
-  background: var(--bg);
+  background: transparent;
   color: var(--text-primary);
   font-family: var(--font-body), sans-serif;
   font-size: 1.0625rem;
@@ -117,17 +118,17 @@ section > * + * { margin-top: 2rem; }
    Glassmorphism
 ───────────────────────────────────────── */
 .glass {
-  background: var(--surface);
+  background: rgba(13, 5, 20, 0.55);
   border: 1px solid var(--border);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
 .glass-warm {
-  background: rgba(255, 45, 138, 0.08);
-  border: 1px solid rgba(255, 105, 180, 0.18);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(13, 5, 20, 0.50);
+  border: 1px solid rgba(255, 105, 180, 0.20);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 /* ─────────────────────────────────────────
@@ -156,8 +157,8 @@ section > * + * { margin-top: 2rem; }
   inset: 0;
   background: linear-gradient(
     105deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.14) 50%,
+    transparent 25%,
+    rgba(255, 239, 239, 0.833) 50%,
     transparent 65%
   );
   transform: translateX(-100%);
@@ -238,7 +239,7 @@ section > * + * { margin-top: 2rem; }
 
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.4; }
-  50%       { opacity: 1; }
+  50%       { opacity: 0.5; }
 }
 
 @keyframes sparkle-spin {
@@ -259,7 +260,7 @@ section > * + * { margin-top: 2rem; }
 
 @keyframes radial-pulse {
   0%, 100% { transform: scale(1);    opacity: 0.6; }
-  50%       { transform: scale(1.1); opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 5; }
 }
 
 @keyframes text-shimmer {
@@ -297,6 +298,20 @@ section > * + * { margin-top: 2rem; }
   75%   { transform: scale(2.2);  opacity: 0; }
   100%  { transform: scale(2.2);  opacity: 0; }
 }
+
+/* ─── Ken Burns slow zoom/pan for cinematic sakura bg ─── */
+@keyframes ken-burns-1 {
+  0%   { transform: scale(1.08) translate(0%, 0%); }
+  50%  { transform: scale(1.14) translate(-2%, 1%); }
+  100% { transform: scale(1.08) translate(2%, -1%); }
+}
+
+@keyframes ken-burns-2 {
+  0%   { transform: scale(1.10) translate(1%, -1%); }
+  50%  { transform: scale(1.06) translate(-1%, 2%); }
+  100% { transform: scale(1.12) translate(0%, 0%); }
+}
+
 
 /* ─────────────────────────────────────────
    Utility animation classes

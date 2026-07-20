@@ -163,11 +163,11 @@ export default function HeroPortrait() {
         <motion.span
           key={label}
           initial={{ opacity: 0, x: side === "right" ? 20 : -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay, duration: 0.55, ease: "backOut" }}
-          className="glass-warm pointer-events-none absolute rounded-full px-3 py-1.5 text-xs font-semibold text-accent-1 border border-border-strong shadow-glow-xs animate-float-slow"
+          animate={{ opacity: 1, x: 10 }}
+          transition={{ delay, duration: 0.5, ease: "backOut" }}
+          className="glass-warm pointer-events-none absolute rounded-full px-6 py-3.5 text-xs font-semibold text-accent-1 border border-border-strong shadow-glow-xs animate-float-slow"
           style={{
-            [side]: "-4px",
+            [side]: "-8px",
             top,
             animationDelay: `${delay * 0.4}s`,
           }}

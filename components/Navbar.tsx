@@ -181,25 +181,34 @@ export default function Navbar() {
           {/* Desktop nav links */}
           <ul className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => {
-              const sectionId = link.href.replace("/#", "").replace("#", "");
+              const sectionId = link.href.replace("#", "");
               const isActive = activeSection === sectionId;
               return (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById(sectionId);
+                      if (!el) return;
+                      if (window.__lenis) {
+                        window.__lenis.scrollTo(el, { offset: -80, duration: 1.2 });
+                      } else {
+                        el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }}
                     className={cn(
-                      "nav-link text-sm transition-colors duration-200",
+                      "nav-link text-sm transition-colors duration-200 bg-transparent border-0 p-0 cursor-pointer font-inherit",
                       isActive
                         ? "gradient-text font-medium"
                         : "text-text-muted hover:text-text-primary"
                     )}
                   >
                     {link.label}
-                  </Link>
+                  </button>
                 </li>
               );
             })}
           </ul>
+
 
           <Button href={resumeUrl} download variant="primary" className="!px-4 !py-2 text-xs">
             Resume

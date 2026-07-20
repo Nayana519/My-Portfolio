@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
+import SakuraBg from "@/components/SakuraBg";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${outfit.variable}`}>
       <body className="noise relative">
+        <SakuraBg />
         <CursorGlow />
         <SmoothScroll />
         <Navbar />

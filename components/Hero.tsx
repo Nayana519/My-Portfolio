@@ -173,6 +173,15 @@ export default function Hero() {
     else el.scrollIntoView({ behavior: "smooth" });
   }
 
+  const sparkles = [
+    { x: 118, y: -16, size: 15, delay: 0 },
+    { x: 70, y: 96, size: 13, delay: 0.6 },
+    { x: 182, y: 85, size: 15, delay: 1.2 },
+    { x: -12, y: 22, size: 12, delay: 1.8 },
+    { x: 300, y: 100, size: 12, delay: 1.8 },
+    { x: 300, y: 22, size: 8, delay: 1.8 }
+  ];
+
   return (
     <section id="hero" ref={sectionRef}
       className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-28">
@@ -225,18 +234,44 @@ export default function Hero() {
               className="relative mt-6 font-display leading-[1.05] text-text-primary"
               style={{ fontSize: split ? "clamp(2.8rem,5vw,4.5rem)" : "clamp(3.5rem,7vw,6rem)" }}
             >
-              Nayana J{" "}
               <motion.span
                 onClick={scrollToAbout}
                 whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                 className="cursor-pointer inline-block relative group"
               >
-                <GradientText as="span" className="italic">Pillai</GradientText>
+                <GradientText as="span" className="italic">Nayana</GradientText>{" "}
+                {sparkles.map((s, i) => (
+  <motion.svg
+    key={i}
+    width={s.size}
+    height={s.size}
+    viewBox="0 0 24 24"
+    className="absolute pointer-events-none text-accent-1"
+    style={{
+      left: s.x,
+      top: s.y,
+    }}
+    animate={{
+      scale: [0.6, 1.2, 0.6],
+      opacity: [0.2, 1, 0.2],
+      rotate: [0, 15, 0],
+    }}
+    transition={{
+      duration: 2.5,
+      repeat: Infinity,
+      delay: s.delay,
+      ease: "easeInOut",
+    }}
+    fill="currentColor"
+  >
+    <path d="M12 0l2.8 8.2L24 12l-9.2 3.8L12 24l-2.8-8.2L0 12l9.2-3.8L12 0z" />
+  </motion.svg>
+))}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] rounded-full bg-accent-1 transition-all duration-300 group-hover:w-full" />
-                <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] tracking-widest text-accent-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[18px] tracking-widest text-accent-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   ✦ meet me ↓ ✦
                 </span>
-              </motion.span>
+              </motion.span> J Pillai
             </motion.h1>
 
             {/* Typing role — fades in once split */}

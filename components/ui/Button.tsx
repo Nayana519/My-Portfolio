@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type HTMLMotionProps } from "framer-motion";
+import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { ReactNode, AnchorHTMLAttributes } from "react";
 
-interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface ButtonProps extends HTMLMotionProps<"a"> {
   children: ReactNode;
   variant?: "primary" | "ghost";
   icon?: ReactNode;

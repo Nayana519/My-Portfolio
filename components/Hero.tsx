@@ -11,7 +11,7 @@ import CherryBlossoms from "@/components/CherryBlossoms";
 import { resumeUrl } from "@/data/links";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-declare global { interface Window { __lenis?: { scrollTo: (el: Element, opts: object) => void } } }
+
 
 const roles = ["Software Engineer", "ML Builder", "Full-Stack Developer"];
 
